@@ -6,6 +6,9 @@ This piece is glue code all the way down, with configuration intertwined with co
 ## Architecture
 This system provides a REST endpoint to receive structured JSON data and renders configurable ZPL templates it then outputs to a printer, be it local or networked.
 
+## Caveats
+Obviously this system is meant to be run in a local network. I assume no responsibility whatsoever for any damage it may cause.
+
 ### Assumptions
 It is assumed that every printer is loaded with one size of label that is not changed. Thus the label format can be part of the printer config.
 
@@ -73,7 +76,7 @@ When sent to the printers _print_ url `http://localhost:4567/print/{printer_id}/
 When sent to the printers _preview_ url `http://localhost:4567/preview/{printer_id}` the system converts the data structure to ZPL an sends it to [Labelary](http://labelary.com) to get a PNG representation of the label. It returns a PNG if all went well, and a HTTP 400 otherwise.
 
 ## Why?
-We use Shopify as our online shop system, and they endorsed Dymo Printers, we thus bought several Dymo Labelwriter 450. Dymo provided a tray program and a [Javascript SDK](https://github.com/dymosoftware/dymo-connect-framework) which worked fine for some time. But since a Chrome update updated the CORS policy and thus would not communicate with the tray program anymore the whole thing broke. The [issue](https://github.com/dymosoftware/dymo-connect-framework) has been known for almost six months now and there is still no solution. What's more, they completely 'revamped' their label creation software to utter uselessness and provide the tray program only for Windows. I use a Mac.
+We use Shopify as our online shop system, and they endorsed Dymo Printers, we thus bought several Dymo Labelwriter 450. Dymo provided a tray program and a [Javascript SDK](https://github.com/dymosoftware/dymo-connect-framework) which worked fine for some time. But since a Chrome update updated the CORS policy and thus would not communicate with the tray program anymore the whole thing broke. The [issue](https://github.com/dymosoftware/dymo-connect-framework/issues/30) has been known for almost six months now and there is still no solution. What's more, they completely 'revamped' their label creation software to utter uselessness and provide the tray program only for Windows. I use a Mac.
 
 On a whim I tried creating ZPL and sending it to a Zebra printer I had, and it was a way more pleasant experience.
 
