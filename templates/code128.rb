@@ -33,10 +33,12 @@ class Code128 < Multihaftetikettierapparat::Label
         )
       end
 
+      title = Multihaftetikettierapparat::ProductTitle.new(json_payload[:product_title])
+
       @label << Zebra::Zpl::Text.new( 
-        data:      json_payload[:product_title] || '', # ToDo Truncate string to avoid overflow
+        data:      title.truncated || '', # ToDo Truncate string to avoid overflow
         position:  [text_left_margin, 25],
-        font_size: Zebra::Zpl::FontSize::SIZE_5,
+        font_size: title.font_size,
         width:     350,
         max_lines: 1
       )

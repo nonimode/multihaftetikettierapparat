@@ -1,4 +1,5 @@
 require './lib/printer'
+require './lib/product_title'
 require './templates/ean13'
 require './templates/code128'
 require 'sinatra'
@@ -9,7 +10,7 @@ require 'barby/barcode/ean_13'
 
 class MHEA < Sinatra::Base
   printers = {}
-  
+
   printers[:zebra_lager] = Multihaftetikettierapparat::Printer.new
   printers[:zebra_lager].configure do |config|
     config.label_width = 455
