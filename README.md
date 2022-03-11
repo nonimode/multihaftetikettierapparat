@@ -17,12 +17,12 @@ I have setup a Linux VM with Phusion Passenger, closely following their [tutoria
 
 You need to have a valid SSL certificate for your server, otherwise cross-domain requests will be blocked by the browser.
 
-I installed cups via APT and added the printers as RAW ZPL devices. But attaching a CUPS server running on a different machine will probably work just as well.
+I installed CUPS via APT and added the printers as RAW ZPL devices. But attaching a CUPS server running on a different machine will probably work just as well.
 
 To run it locally on you machine install the bundle and then issue `bundle exec passenger start` which should give you a working http server on `localhost:3000`.
 
 ### Configuration
-Every printer is configured through a class that contains everything that is necessary to drive the printer. ZPL templates are created using the [Zebra::Zpl](https://github.com/bbulpett/zebra-zpl) ruby gem. See [multihaftetikettierapparat.rb] for the structure of the `printers{}` hash:
+Every printer is configured through a class that contains everything that is necessary to drive the printer. ZPL templates are created using the [Zebra::Zpl](https://github.com/bbulpett/zebra-zpl) ruby gem. See [multihaftetikettierapparat.rb](multihaftetikettierapparat.rb) for the structure of the `printers{}` hash:
 
 ```ruby
 printers[:zd421_01] = Multihaftetikettierapparat::Printer.new

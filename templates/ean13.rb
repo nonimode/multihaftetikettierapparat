@@ -20,7 +20,7 @@ class EAN13 < Multihaftetikettierapparat::Label
       title = Multihaftetikettierapparat::ProductTitle.new(json_payload[:product_title])
 
       @label << Zebra::Zpl::Text.new( 
-        data:      title.truncated || '', # ToDo Truncate string to avoid overflow
+        data:      title.truncated || '',
         position:  [text_left_margin, 25],
         font_size: title.font_size,
         width:     350,
