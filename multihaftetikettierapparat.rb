@@ -3,9 +3,7 @@ require './lib/product_title'
 require './templates/ean13'
 require './templates/code128'
 require 'sinatra'
-require 'sinatra/reloader'
 require 'sinatra/cross_origin'
-require 'pry'
 require 'barby/barcode/ean_13'
 
 class MHEA < Sinatra::Base
@@ -43,6 +41,7 @@ class MHEA < Sinatra::Base
     config.location = "Leo's Büro"
     config.print_speed = 5
   end
+
   configure do
     enable :cross_origin
   end
