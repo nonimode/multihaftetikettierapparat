@@ -9,36 +9,36 @@ require 'barby/barcode/ean_13'
 class MHEA < Sinatra::Base
   printers = {}
 
-  printers[:zebra_lager] = Multihaftetikettierapparat::Printer.new
-  printers[:zebra_lager].configure do |config|
-    config.label_width = 455
-    config.label_height = 255
-    config.print_density = 203
-    config.human_readable_name = 'Zebra QLn420'
-    config.machine_name = 'Zebra_Technologies_ZTC_QLn420__CPCL_'
-    config.location = "Lager"
-    config.print_speed = 14
-  end
-  
-  printers[:zebra_leo] = Multihaftetikettierapparat::Printer.new
-  printers[:zebra_leo].configure do |config|
-    config.label_width = 455
-    config.label_height = 255
-    config.print_density = 203
-    config.human_readable_name = 'Zebra QLn420'
-    config.machine_name = 'Zebra_MBP'
-    config.location = "Leo's Büro"
-    config.print_speed = 1
-  end
-  
   printers[:zd421_01] = Multihaftetikettierapparat::Printer.new
   printers[:zd421_01].configure do |config|
     config.label_width = 455
     config.label_height = 255
     config.print_density = 203
-    config.human_readable_name = 'Zebra ZD421'
-    config.machine_name = 'ZD421_01'
-    config.location = "Leo's Büro"
+    config.human_readable_name = "Zebra ZD421"
+    config.machine_name = "ZD421_01"
+    config.location = "Onlineshop/Lager"
+    config.print_speed = 5
+  end
+
+  printers[:zd421_02] = Multihaftetikettierapparat::Printer.new
+  printers[:zd421_02].configure do |config|
+    config.label_width = 455
+    config.label_height = 255
+    config.print_density = 203
+    config.human_readable_name = "Zebra ZD421"
+    config.machine_name = "ZD421_02"
+    config.location = "Werkstatt"
+    config.print_speed = 5
+  end
+
+  printers[:zd421_03] = Multihaftetikettierapparat::Printer.new
+  printers[:zd421_03].configure do |config|
+    config.label_width = 455
+    config.label_height = 255
+    config.print_density = 203
+    config.human_readable_name = "Zebra ZD421"
+    config.machine_name = "ZD421_03"
+    config.location = "Einkauf"
     config.print_speed = 5
   end
 
@@ -51,7 +51,7 @@ class MHEA < Sinatra::Base
   end
 
   options "*" do
-    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Allow"] = "GET, POST"
     response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
     response.headers["Access-Control-Allow-Origin"] = "*"
     200
