@@ -39,7 +39,7 @@ class MHEA < Sinatra::Base
     config.human_readable_name = "Zebra ZD421"
     config.machine_name = "ZD421_03"
     config.location = "Einkauf"
-    config.print_speed = 5
+    config.print_speed = 2
   end
 
   configure do
