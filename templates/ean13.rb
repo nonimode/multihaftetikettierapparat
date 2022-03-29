@@ -30,7 +30,7 @@ class EAN13 < Multihaftetikettierapparat::Label
       @label << Zebra::Zpl::Text.new( 
         data: json_payload[:product_type] || '',
         position: [text_left_margin, 75],
-        font_size: Zebra::Zpl::FontSize::SIZE_4,
+        font_size: Zebra::Zpl::FontSize::SIZE_3,
         width: 350,
         max_lines: 1
       )
